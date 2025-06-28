@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
     <title>Unifecaf</title>
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="images/logo_2.png" alt="UniFECAF Digital logo">
+            </div>
+            <h1 class="course-title">Análise e Desenvolvimento de Sistemas</h1>
+        </header>
+        <main class="main-content">
+            <aside class="tutor-section">
+                <div class="tutor-card">
+                    <img src="images/feroz-removebg-preview.png" alt="Feroz - Tutor inteligente" class="tutor-image" id="ferozImage">
+                    <h2>Feroz</h2>
+                    <p>Tutor inteligente</p>
+                </div>
+            </aside>
+            <section class="disciplines-section">
+                <div class="disciplines-grid-container">
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                    <div class="discipline-card">
+                        <div class="discipline-icon"></div>
+                        <p>Disciplina</p>
+                    </div>
+                </div>
+                <h2 class="disciplines-title">Disciplinas</h2>
+            </section>
+        </main>
+
+        <div class="chat-overlay" id="chatOverlay">
+            <div class="chat-window">
+                <div class="chat-header">
+                    <h3>Feroz - Tutor Inteligente</h3>
+                    <button class="close-chat-btn" id="closeChatBtn">&times;</button>
+                </div>
+                <div class="message-area" id="messageArea">
+                    </div>
+                <form id="messageForm" class="chat-input-form">
+                    <input type="text" id="messageInput" placeholder="Digite sua mensagem...">
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
