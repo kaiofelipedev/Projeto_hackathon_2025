@@ -1,0 +1,382 @@
+
+:root {
+    --dark-blue: #1A2033;
+    --light-blue: #3A69F0;
+    --text-color: #FFFFFF;
+    --border-color: #00A3FF;
+    --card-background: #2D4059;
+    --chat-background: #36454F; 
+    --chat-header-background: #2D3A4B; 
+    --chat-bubble-user: #007bff;
+    --chat-bubble-ai: #555;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--dark-blue);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative; 
+    z-index: 1; 
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-blue);
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.course-title {
+    font-size: 2.2em;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tutor-section {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tutor-card {
+    background-color: var(--dark-blue);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+}
+
+.tutor-image {
+    width: 180px;
+    height: 180px;
+    
+    object-fit: cover;
+    border: 5px solid var(--border-color);
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 163, 255, 0.5);
+    cursor: pointer; /* Indica que é clicável */
+    transition: transform 0.2s ease-in-out;
+}
+
+.tutor-image:hover {
+    transform: scale(1.05);
+}
+
+.tutor-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.tutor-card p {
+    font-size: 1.1em;
+    color: #cccccc;
+    margin: 0;
+}
+
+.disciplines-section {
+    flex: 2;
+    background-color: var(--light-blue);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.disciplines-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.discipline-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.discipline-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.discipline-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #000000;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.discipline-card p {
+    font-size: 1.1em;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.disciplines-title {
+    font-size: 2em;
+    margin-top: 0;
+    text-align: center;
+    color: var(--text-color);
+}
+
+
+.chat-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    visibility: hidden;
+    opacity: 0; 
+    transition: visibility 0.3s, opacity 0.3s ease-in-out;
+}
+
+.chat-overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.chat-window {
+    width: 90%;
+    max-width: 500px;
+    height: 70vh; 
+    background-color: var(--chat-background);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.chat-overlay.visible .chat-window {
+    transform: scale(1); 
+}
+
+.chat-header {
+    background-color: var(--chat-header-background);
+    color: var(--text-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.close-chat-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8em;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
+}
+
+.close-chat-btn:hover {
+    color: red;
+}
+
+.message-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 0.95em;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: var(--chat-bubble-user);
+    color: white;
+}
+
+.message.ai {
+    align-self: flex-start;
+    background-color: var(--chat-bubble-ai);
+    color: white;
+}
+
+.chat-input-form {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--chat-header-background);
+}
+
+#messageInput {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #555;
+    border-radius: 20px;
+    margin-right: 10px;
+    background-color: #444;
+    color: white;
+    font-size: 1em;
+    outline: none;
+}
+
+#messageInput::placeholder {
+    color: #bbb;
+}
+
+.chat-input-form button {
+    padding: 10px 20px;
+    background-color: var(--light-blue);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.chat-input-form button:hover {
+    background-color: #2a5dd1;
+}
+
+
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .tutor-section {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .tutor-card {
+        max-width: 400px;
+    }
+
+    .disciplines-section {
+        width: 100%;
+    }
+
+    .disciplines-grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .course-title {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 576px) {
+    header, .tutor-card, .disciplines-section {
+        padding: 15px;
+    }
+
+    .course-title {
+        font-size: 1.5em;
+    }
+
+    .tutor-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .disciplines-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discipline-card {
+        height: 120px;
+    }
+
+    .discipline-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .disciplines-title {
+        font-size: 1.8em;
+    }
+
+    .chat-window {
+        width: 95%; 
+        height: 80vh;
+    }
+}
