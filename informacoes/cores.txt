@@ -1,5 +1,5 @@
-Azul Royal (#0033A0)
-Vermelho Vibrante (#E30613)
-Branco Puro (#FFFFFF)
-Cinza Claro (#F2F2F2)
-Preto Suave (#1A1A1A)
+Azul Royal - #0033A0
+Vermelho Vibrante  - #E30613
+Branco Puro  - #FFFFFF
+Cinza Claro  - #F2F2F2
+Preto Suave  - #1A1A1A
